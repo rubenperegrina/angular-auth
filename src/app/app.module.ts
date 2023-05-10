@@ -6,6 +6,8 @@ import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthModule } from './features/auth/auth.module';
 import { LayoutModule } from './features/layout/layout.module';
+import { ProfileModule } from './features/profile/profile.module';
+import { BoardsModule } from './features/boards/boards.module';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { LayoutModule } from './features/layout/layout.module';
     AppRoutingModule,
     ReactiveFormsModule,
     AuthModule,
-    LayoutModule
+    LayoutModule,
+    ProfileModule,
+    BoardsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
