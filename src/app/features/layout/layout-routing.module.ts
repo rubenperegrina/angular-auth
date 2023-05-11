@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LayoutComponent } from './components/layout/layout.component';
+import { LayoutComponent } from './layout.component';
 
 const routes: Routes = [
   {
@@ -9,13 +9,13 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'boards',
+        redirectTo: 'home',
         pathMatch: 'full'
       },
       {
-        path: 'boards',
+        path: 'home',
         loadChildren: () =>
-          import('../boards/boards.module').then((m) => m.BoardsModule),
+          import('../home/home.module').then((m) => m.HomeModule),
       },
       {
         path: 'profile',
