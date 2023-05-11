@@ -3,31 +3,29 @@ import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './pages/login/login.component';
-import { ForgotPasswordComponent } from './pages/forgot-password/forgot-password.component';
 import { RegisterComponent } from './pages/register/register.component';
-import { RecoveryComponent } from './pages/recovery/recovery.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ResgisterFormComponent } from './components/resgister-form/resgister-form.component';
-import { RecoveryFormComponent } from './components/recovery-form/recovery-form.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
-import { ForgotPasswordFormComponent } from './components/forgot-password-form/forgot-password-form.component';
-
+import { SharedModule } from '../shared/shared.module';
+import { AuthComponent } from './auth.component';
+import { AuthDAOImpl } from './services/auth-dao-impl';
+import { AuthDAO } from './services/auth-dao.interface';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    ForgotPasswordComponent,
     RegisterComponent,
-    RecoveryComponent,
-    ResgisterFormComponent,
-    RecoveryFormComponent,
-    LoginFormComponent,
-    ForgotPasswordFormComponent
+    AuthComponent
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule
+  ],
+  exports: [
+  ],
+  providers: [
+    { provide: AuthDAO, useClass: AuthDAOImpl }
   ]
 })
 export class AuthModule { }
