@@ -4,10 +4,12 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthModule } from './features/auth/auth.module';
-import { LayoutModule } from './features/layout/layout.module';
-import { ProfileModule } from './features/profile/profile.module';
-import { BoardsModule } from './features/boards/boards.module';
+import { SharedModule } from './features/shared/shared.module';
+import { HttpAdapter } from './adapters/http-adapter.interface';
+import { HttpClientAdapter } from './adapters/http-client-adapter';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,12 +19,12 @@ import { BoardsModule } from './features/boards/boards.module';
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
     AuthModule,
-    LayoutModule,
-    ProfileModule,
-    BoardsModule
+    SharedModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: HttpAdapter, useClass: HttpClientAdapter }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
